@@ -1,0 +1,23 @@
+# Azure Pipelines configuration for react-native
+#
+# Builds Windows, Linux, and macOS
+
+jobs:
+- job: Windows
+  pool:
+    vmImage: 'vs2017-win2016'
+  variables:
+    ANDROID_NDK: $(ANDROID_HOME)\android-ndk-r17c
+    ANDROID_BUILD_VERSION: 27
+    ANDROID_TOOLS_VERSION: 27.0.3
+    GRADLE_OPTS: -Dorg.gradle.daemon=false
+    JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+  steps:
+  - template: azure-pipelines-windows.yml
+
+# TODO
+#- job: Linux
+#  pool:
+#    vmImage: 'ubuntu-16.04'
+#  steps:
+#  - template: templates/npm-steps.yml  # Template reference

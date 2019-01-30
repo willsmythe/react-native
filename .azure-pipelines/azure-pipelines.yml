@@ -13,6 +13,10 @@ jobs:
     GRADLE_OPTS: -Dorg.gradle.daemon=false
     JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
   steps:
+  - bash: |
+      echo ${ANDROID_NDK}
+      echo ${ANDROID_HOME}
+      printenv
   - template: azure-pipelines-windows.yml
 
 # TODO

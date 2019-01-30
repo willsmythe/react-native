@@ -10,12 +10,11 @@ steps:
     printenv  
 
 - script: |
-    sdkmanager --licenses > nul
-    sdkmanager "system-images;android-19;google_apis;armeabi-v7a"
-    sdkmanager "platforms;android-$(ANDROID_BUILD_VERSION)"
-    sdkmanager "build-tools;$(ANDROID_TOOLS_VERSION)"
-    sdkmanager "add-ons;addon-google_apis-google-23"
-    sdkmanager "extras;android;m2repository"    
+    echo "y" | sdkmanager "system-images;android-19;google_apis;armeabi-v7a"
+    echo "y" | sdkmanager "platforms;android-$(ANDROID_BUILD_VERSION)"
+    echo "y" | sdkmanager "build-tools;$(ANDROID_TOOLS_VERSION)"
+    echo "y" | sdkmanager "add-ons;addon-google_apis-google-23"
+    echo "y" | sdkmanager "extras;android;m2repository"    
   displayName: 'Setup Android SDK'
 
 - task: NodeTool@0

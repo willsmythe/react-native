@@ -16,17 +16,17 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
-- script: |
-    yarn install
-    gradlew.bat RNTester:android:app:assembleRelease
+- script: yarn install
+  displayName: 'Install depdendencies'
+
+- script: gradlew.bat RNTester:android:app:assembleRelease
   displayName: 'Build'
   
-- script: |
-    yarn test-ci-win
+- script: npm test
   displayName: 'Test'
 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: '$(JEST_JUNIT_OUTPUT)'
-  condition: always()
-  displayName: 'Publish test results'
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFiles: '$(JEST_JUNIT_OUTPUT)'
+#  condition: always()
+#  displayName: 'Publish test results'

@@ -10,6 +10,7 @@ steps:
     printenv  
 
 - script: |
+    sdkmanager --licenses > nul
     sdkmanager "system-images;android-19;google_apis;armeabi-v7a"
     sdkmanager "platforms;android-$(ANDROID_BUILD_VERSION)"
     sdkmanager "build-tools;$(ANDROID_TOOLS_VERSION)"

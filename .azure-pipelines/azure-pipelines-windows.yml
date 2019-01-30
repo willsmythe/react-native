@@ -1,7 +1,13 @@
 steps:
 - script: |
     echo ##vso[task.prependpath]$(ANDROID_HOME)\tools\bin
+    echo ##vso[task.setvariable variable=ANDROID_NDK]$(ANDROID_HOME)\android-ndk-r17c
   displayName: 'Add Android to PATH'
+
+- bash: |
+    echo ${ANDROID_NDK}
+    echo ${ANDROID_HOME}
+    printenv  
 
 - script: |
     sdkmanager "system-images;android-19;google_apis;armeabi-v7a"
